@@ -428,6 +428,47 @@ where
 \end_inset
 
 
+\begin_inset Formula 
+\begin{align*}
+IS_{0} & =13\left(a-b\right)^{2}+3\left(a-3b\right)^{2},\\
+IS_{1} & =13(b-c)^{2}+3(b+c)^{2},\\
+IS_{2} & =13(c-d)^{2}+3(3c-d)^{2}.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The quantity 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ is used to prevent singularity of 
+\begin_inset Formula $\alpha_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $i=0,1,2$
+\end_inset
+
+.
+ Usually, value 
+\begin_inset Formula $\epsilon=10^{-6}$
+\end_inset
+
+ is used.
+ More detailed explanation of WENO reconstruction and WENO weights is given
+ in 
+\begin_inset Newline newline
+\end_inset
+
+Shu, C.-W.
+ (1999).
+ High Order ENO and WENO Schemes for Computational Fluid Dynamics.
+ Lecture Notes in Computational Science and Engineering, 9, 439–582.
+ doi:10.1007/978-3-662-03882-6_5
 \end_layout
 
 \begin_layout Section
