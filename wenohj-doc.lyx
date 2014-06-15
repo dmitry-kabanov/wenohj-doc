@@ -135,6 +135,10 @@ Even if the initial condition
 , that is continuous function with jumps in the derivative.
 \end_layout
 
+\begin_layout Section
+WENO scheme for Hamilton-Jacobi in 1D
+\end_layout
+
 \begin_layout Standard
 To solve this problem we discretize the space: 
 \begin_inset Formula $\{x_{i}\}$
