@@ -79,7 +79,7 @@ Dmitry Kabanov
 \begin_layout Standard
 Description of the finite difference fifth order WENO algorithm for Hamilton-Jac
 obi equations.
- Implemented by following:
+ Implemented according to the paper:
 \end_layout
 
 \begin_layout Standard
