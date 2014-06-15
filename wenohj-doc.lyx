@@ -283,8 +283,52 @@ The third order left-biased approximations on three different stencils are
 \begin_layout Standard
 We want to combine these approximations using convex combination:
 \begin_inset Formula 
+\begin{equation}
+\phi_{x,i}^{-}=\omega_{0}\phi_{x,i}^{-,0}+\omega_{1}\phi_{x,i}^{-,1}+\omega_{2}\phi_{x,i}^{-,2},\label{eq:convex-combination}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\omega_{0}+\omega_{1}+\omega_{2}=1$
+\end_inset
+
+, and 
+\begin_inset Formula $\omega_{i}\geq0$
+\end_inset
+
+, 
+\begin_inset Formula $i=0,1,2$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+If we take ideal weights 
+\begin_inset Formula $\omega_{0}=0.1$
+\end_inset
+
+, 
+\begin_inset Formula $\omega_{1}=0.6$
+\end_inset
+
+, 
+\begin_inset Formula $\omega_{2}=0.3$
+\end_inset
+
+, we obtain fifth order approximation of 
+\begin_inset Formula $\phi_{x,i}$
+\end_inset
+
+ on the six-point stencil 
+\begin_inset Formula $\{x_{i-3},\dots,x_{i+2}\}$
+\end_inset
+
+:
+\begin_inset Formula 
 \[
-\phi_{x,i}^{-}=\omega_{0}\phi_{x,i}^{-,0}+\omega_{1}\phi_{x,i}^{-,1}+\omega_{2}\phi_{x,i}^{-,2}.
+\phi_{x,i}=\frac{1}{30}\frac{\Delta^{+}\phi_{i-3}}{\Delta x}-\frac{13}{60}\frac{\Delta^{+}\phi_{i-2}}{\Delta x}+\frac{47}{60}\frac{\Delta^{+}\phi_{i-1}}{\Delta x}+\frac{9}{20}\frac{\Delta^{+}\phi_{i}}{\Delta x}-\frac{1}{20}\frac{\Delta^{+}\phi_{i+1}}{\Delta x}.
 \]
 
 \end_inset
@@ -293,7 +337,64 @@ We want to combine these approximations using convex combination:
 \end_layout
 
 \begin_layout Standard
-In the end the WENO approximation is:
+However, the above approximation is OK only if 
+\begin_inset Formula $\phi_{x}$
+\end_inset
+
+ is smooth on this six-point stencil.
+ To sustain essentially nonoscillatory property, we define the weights such
+ that:
+\end_layout
+
+\begin_layout Itemize
+if 
+\begin_inset Formula $\phi_{x}$
+\end_inset
+
+ is smooth on the whole six-point stencil, then we set 
+\begin_inset Formula $\omega_{0}=0.1+\mathcal{O}\left(\Delta x^{2}\right)$
+\end_inset
+
+, 
+\begin_inset Formula $\omega_{1}=0.6+\mathcal{O}\left(\Delta x^{2}\right)$
+\end_inset
+
+, 
+\begin_inset Formula $\omega_{2}=0.3+\mathcal{O}\left(\Delta x^{2}\right)$
+\end_inset
+
+.
+ Therefore, approximation is fifth-order accurate.
+\end_layout
+
+\begin_layout Itemize
+if 
+\begin_inset Formula $\phi_{x}$
+\end_inset
+
+ is not smooth on some three point stencil, then the weight for this stencil
+ should be close to zero to avoid oscillations.
+\end_layout
+
+\begin_layout Standard
+Using 
+\begin_inset Formula $\omega_{1}=1-\omega_{0}-\omega_{2}$
+\end_inset
+
+ we can rewrite 
+\begin_inset Formula $\left(\ref{eq:convex-combination}\right)$
+\end_inset
+
+ in the following manner: 
+\begin_inset Formula 
+\begin{multline*}
+\phi_{x,i}^{-}=\omega_{0}\phi_{x,i}^{-,0}+\left(1-\omega_{0}-\omega_{2}\right)\phi_{x,i}^{-,1}+\omega_{2}\phi_{x,i}^{-,2}=\\
+\frac{1}{2}\left(\phi_{x,i}^{-,1}+\phi_{x,i}^{-,2}\right)+\omega_{0}\left(\phi_{x,i}^{-,0}-\phi_{x,i}^{-,1}\right)+\left(\omega_{2}-\frac{1}{2}\right)\left(\phi_{x,i}^{-,2}-\phi_{x,i}^{-,1}\right),
+\end{multline*}
+
+\end_inset
+
+which leads to
 \begin_inset Formula 
 \begin{multline*}
 \phi_{x,i}^{-}=\frac{1}{12}\left(-\frac{\Delta^{+}\phi_{i-2}}{\Delta x}+7\frac{\Delta^{+}\phi_{i-1}}{\Delta}+7\frac{\Delta^{+}\phi_{i}}{\Delta x}-\frac{\Delta^{+}\phi_{i+1}}{\Delta x}\right)-\\
