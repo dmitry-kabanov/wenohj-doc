@@ -506,7 +506,7 @@ Advection equation
 We measure convergence rate for advection equation:
 \begin_inset Formula 
 \[
-\phi_{t}+\phi_{x}=0,\quad\phi(x,0)=\sin\pi x,\quad-1\leq x\leq1,\quad\phi(-1)=\phi(1)
+\phi_{t}+\phi_{x}=0,\quad\phi(x,0)=\sin\pi x,\quad-1\leq x\leq1,\quad\phi(-1)=\phi(1).
 \]
 
 \end_inset
