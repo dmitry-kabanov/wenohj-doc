@@ -900,5 +900,273 @@ We measure convergence rate for advection equation:
 
 \end_layout
 
+\begin_layout Subsection
+Linear system with constant coefficients
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:linear-system-constant-coeffs"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We solve the following system:
+\begin_inset Formula 
+\[
+\left(\begin{array}{c}
+u\\
+v
+\end{array}\right)_{t}+\begin{pmatrix}2 & 1\\
+1 & 2
+\end{pmatrix}\left(\begin{array}{c}
+u\\
+v
+\end{array}\right)_{x}=0,
+\]
+
+\end_inset
+
+with initial conditions
+\begin_inset Formula 
+\begin{eqnarray*}
+u_{0} & = & \begin{cases}
+1, & \mbox{if }|x|\leq1,\\
+0, & \mbox{if }|x|>1,
+\end{cases}\\
+v_{0} & = & 0.
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Introducing new variables 
+\begin_inset Formula $w_{1}=u+v$
+\end_inset
+
+ and 
+\begin_inset Formula $w_{2}=u-v$
+\end_inset
+
+ we obtain the system of two linear advection equations
+\begin_inset Formula 
+\begin{eqnarray*}
+w_{1t}+3w_{1x} & = & 0,\\
+w_{2t}+w_{2x} & = & 0,
+\end{eqnarray*}
+
+\end_inset
+
+with initial conditions
+\begin_inset Formula 
+\begin{eqnarray*}
+w_{10} & = & u_{0}(x),\\
+w_{20} & = & u_{0}(x),
+\end{eqnarray*}
+
+\end_inset
+
+for which we can immediately write the solution
+\begin_inset Formula 
+\[
+w_{1}=w_{10}(x-3t),\quad w_{2}=w_{20}(x-t).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now we go back to the original variables:
+\begin_inset Formula 
+\begin{eqnarray*}
+u & = & \frac{1}{2}\left(w_{1}+w_{2}\right),\\
+v & = & \frac{1}{2}\left(w_{1}-w_{2}\right),
+\end{eqnarray*}
+
+\end_inset
+
+therefore
+\begin_inset Formula 
+\begin{eqnarray*}
+u & = & \frac{1}{2}\left(u_{0}(x-3t)+u_{0}(x-t)\right),\\
+v & = & \frac{1}{2}\left(u_{0}(x-3t)-u_{0}(x-t)\right).
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Decoupled linear system with variable coefficients 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:decoupled-linear-system-var-coeffs"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We consider decoupled system
+\begin_inset Formula 
+\begin{equation}
+\left(\begin{array}{c}
+u\\
+v
+\end{array}\right)_{t}+\begin{pmatrix}1-x & 0\\
+0 & 2
+\end{pmatrix}\left(\begin{array}{c}
+u\\
+v
+\end{array}\right)_{x}=0,\label{eq:system-decoupled-var-coef}
+\end{equation}
+
+\end_inset
+
+with initial conditions
+\begin_inset Formula 
+\[
+u_{0}=\exp(-(x-4)^{2}),\quad v_{0}=0.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As system is decoupled we solve each equation independently.
+ For first equation we use the method of characteristics.
+ We parameterize curve with initial data with 
+\begin_inset Formula $s$
+\end_inset
+
+, and we parameterize solution for each characteristic with 
+\begin_inset Formula $\tau$
+\end_inset
+
+.
+ Then 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:system-decoupled-var-coef"
+
+\end_inset
+
+ is transformed into the system of three ordinary differential equations
+ with independent variable 
+\begin_inset Formula $\tau$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\dot{x}=1-x,\quad\dot{t}=1,\quad\dot{u}=0
+\]
+
+\end_inset
+
+with initial conditions
+\begin_inset Formula 
+\[
+x_{0}=s,\quad t_{0}=0,\quad u_{0}=u_{0}(s).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Integrating the ODEs we obtain:
+\begin_inset Formula 
+\[
+1-x=C_{1}\exp(-\tau),\quad t=\tau+C_{2},\quad u=C_{3}(s),
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $C_{1}$
+\end_inset
+
+, 
+\begin_inset Formula $C_{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $C_{3}$
+\end_inset
+
+ are integration constants, and using the initial conditions we have
+\begin_inset Formula 
+\[
+x=1-(1-s)\exp(-\tau),\quad t=\tau,\quad u=u_{0}(s).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Expressing 
+\begin_inset Formula $s$
+\end_inset
+
+ and 
+\begin_inset Formula $\tau$
+\end_inset
+
+ in terms of 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $t$
+\end_inset
+
+, we obtain
+\begin_inset Formula 
+\[
+s=1-(1-x)\exp t,\quad\tau=t,
+\]
+
+\end_inset
+
+therefore, solution is
+\begin_inset Formula 
+\[
+u=u_{0}\left(1-(1-x)\exp t\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Solution for this equation contains sonic point at position 
+\begin_inset Formula $x=1$
+\end_inset
+
+.
+ Therefore initial Gaussian profile will travel towards this sonic point
+ squeezing itself.
+\end_layout
+
+\begin_layout Standard
+Second equation has trivial solution because it's a linear advection equation
+ with trivial initial conditions.
+\end_layout
+
 \end_body
 \end_document
